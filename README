@@ -1,0 +1,58 @@
+en_analyzer~
+
+en_analyzer~ provides an interface to access The Echo Nest's audio analysis 
+API in Max/MSP. The object uploads the audio data in an identically-named 
+buffer~ object to The Echo Nest's servers for analysis, then stores and 
+outputs the analysis data in Max.
+
+Usage:
+You will need an Echo Nest API key to use this object. Register for a key at 
+http://developer.echonest.com/.
+
+To use en_analyzer~, first put the object file (.mxo) somewhere where the Max 
+application can find it. Usually this is done by adding the path to 
+en_analyzer~.mxo in the "Options->File Preferences..." menu.
+
+In Max, create a new en_analyzer~ object, and use the first argument to specify 
+the name of the buffer~ containing the audio data you'd like to analyze. You 
+can specify your API key by passing it as the second argument to the object, or 
+by sending en_analyzer~ a message like "api_key WHATEVER", or by entering your 
+API key manually in the object's inspector. Sending the object an "analyze" 
+message makes the magic happen. First, the audio data in your buffer is saved 
+to a temporary file. en_analyzer~ checks to see if this audio data has already 
+been analyzed by The Echo Nest, and if so it retrieves the analysis data. If 
+no existing analysis is found, the object uploads the temporary file for 
+analysis. You must be connected to the internet to retrieve analysis data; 
+once the data has been retrieved and stored in the object, you can continue to 
+use it even if you go offline until you close your patch. Depending on the 
+speed of your connection, uploading the audio data for analysis may take a 
+minute.
+
+When your audio data has been analyzed, the analysis data is downloaded and 
+stored in the object, where it can be accessed by sending en_analyzer~ messages 
+like "bar 2", "section 3", "segment 29", or "global". See the en_analyzer~ help 
+file for more information.
+
+Contents:
+	maxobj/		// max object, max help file, and example patch
+	src/		// source code for max object
+
+Currently, en_analyzer~ only exists as a universal binary for OS X. Xcode and 
+Visual Studio projects are provided as starting points. If you want to build 
+the object yourself, you'll need the Max 5 SDK, as well as the following 
+external libraries:
+
+- libcurl – http://curl.haxx.se/
+	Open source C library to access online data.
+- json-c - http://oss.metaparadigm.com/json-c/
+	Open source C library to parse JSON.
+- libsndfile - http://www.mega-nerd.com/libsndfile/
+	Open source C library to read and write audiofiles.
+
+Support:
+For more information about The Echo Nest's audio analysis, see:
+http://developer.echonest.com/docs/v4/_static/AnalyzeDocumentation_2.2.pdf
+For more documentation about The Echo Nest API, see:
+http://developer.echonest.com/
+For questions, comments, or bugs, contact:
+ben@echonest.com

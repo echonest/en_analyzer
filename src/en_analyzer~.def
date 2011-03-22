@@ -1,0 +1,4 @@
+LIBRARY en_analyzer~.mxe
+
+EXPORTS
+	main
