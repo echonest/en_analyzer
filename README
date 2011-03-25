@@ -6,8 +6,12 @@ buffer~ object to The Echo Nest's servers for analysis, then stores and
 outputs the analysis data in Max.
 
 Usage:
-You will need an Echo Nest API key to use this object. Register for a key at 
-http://developer.echonest.com/.
+In order to use en_analyzer~, you will need to register for a developer account
+with The Echo Nest. To do so, simply visit 
+http://developer.echonest.com/account/register and enter your e-mail address,
+a username, and a password. You'll be given an API key, which will allow you to
+use en_analyzer~ to communicate with The Echo Nest API and retrieve audio
+analysis data (the analysis is done on The Echo Nest's servers).
 
 To use en_analyzer~, first put the object file (.mxo) somewhere where the Max 
 application can find it. Usually this is done by adding the path to 
