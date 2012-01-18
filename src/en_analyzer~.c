@@ -361,7 +361,7 @@ int upload(t_en_analyzer *x, char *filename)
     curl_formadd(&formpost,
                &lastptr,
                CURLFORM_COPYNAME, "filetype",
-               CURLFORM_COPYCONTENTS, "mp3",
+               CURLFORM_COPYCONTENTS, "wav",
                CURLFORM_END);
     /* Fill in the submit field too, even if this is rarely needed */ 
     curl_formadd(&formpost,
